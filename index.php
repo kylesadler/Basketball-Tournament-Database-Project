@@ -18,7 +18,7 @@ if (isset($_POST['submit']))
     $name = escapeshellarg($_POST[name]);
 
     // build the linux command that you want executed;  
-    $command = 'python3 hello.py ' . $name;
+    $command = 'python3 backend/hello.py ' . $name;
 
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);

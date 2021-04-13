@@ -21,7 +21,7 @@ if (isset($_POST['submit']))
     $price_per_lb = escapeshellarg($_POST[price_per_lb]);
     $roasting = escapeshellarg($_POST[roasting]);
 
-    $command = 'python3 insert_new_item.py' . ' '.  $name . ' ' . $price_per_lb . ' ' . $roasting;
+    $command = 'python3 backend/insert_new_item.py' . ' '.  $name . ' ' . $price_per_lb . ' ' . $roasting;
 
     // remove dangerous characters from command to protect web server
     $escaped_command = escapeshellcmd($command);
