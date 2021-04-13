@@ -52,6 +52,7 @@ Website with 7 functions
    CRUD team
    CRUD game
    CRUD result
+   CRUD player
    view all teams
    view all results per team
    view all results on date
@@ -64,4 +65,30 @@ Navigation buttons
 stateless. Php frontend calls python backend
 python returns values by printing
 
+make one python script for each backend function
+make one php page for each webpage. PHP can be used to template
+
+reuse code by php include
+https://www.w3schools.com/php/php_includes.asp
+
 exec('python blibble.py', $output, $ret_code);
+
+
+
+
+all commands execute from /home/krs028/public_html as www-data user
+
+to make:
+nvaigation bar
+team card
+game card
+result card
+player card
+
+
+Tables:
+   Team: ID, Name, Mascot, Seed
+   Player: ID, TeamID, Name, Position
+   Game: ID, HomeTeamID, AwayTeamID, CourtNumber, Date
+   Result: GameID, HomeScore, AwayScore
+
