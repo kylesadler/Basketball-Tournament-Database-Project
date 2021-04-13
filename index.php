@@ -2,7 +2,7 @@
 <body>
 <h3>Enter your name:</h3>
 
-<form action="hello.php" method="post">
+<form action="index.php" method="post">
     Name: <input type="text" name="name"><br>
     <input name="submit" type="submit" >
 </form>
@@ -18,7 +18,7 @@ if (isset($_POST['submit']))
     $name = escapeshellarg($_POST[name]);
 
     // build the linux command that you want executed;  
-    $command = 'python3 backend/hello.py ' . $name;
+    $command = 'pwd; python3 backend/hello.py ' . $name;
 
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);
