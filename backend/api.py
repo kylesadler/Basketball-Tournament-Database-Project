@@ -16,8 +16,11 @@ if __name__ == '__main__':
 
     print(f"running {command} on arguments: {', '.join(args)} <br> <br>")
 
-    # try:
-    COMMAND_TO_FUNCTION[command](*args)
-    # except:
-        # pass
+    try:
+        COMMAND_TO_FUNCTION[command](*args)
+    except TypeError:
+        print("incorrect number of arguments\n")
+    except Exception as e:
+        print(str(e))
+        print()
 
