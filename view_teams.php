@@ -1,13 +1,13 @@
 <html>
 <body>
 <?php
-    require 'nav.php';
-    require 'util.php';
+    require 'util/nav.php';
+    require 'util/util.php';
 ?>
 <h3>View teams:</h3>
 
 <?php
-$teams = run_command('view_teams');
+$teams = backend('view_teams');
 echo $teams;
 ?>
 

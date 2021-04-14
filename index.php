@@ -1,6 +1,6 @@
 <html>
 <body>
-<?php require 'nav.php'; ?>
+<?php require 'util/nav.php'; ?>
 
 <ol>
     <li> <a href="/~krs028/add_team.php">Add a Team</a> </li>

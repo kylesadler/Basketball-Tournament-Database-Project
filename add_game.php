@@ -1,8 +1,8 @@
 <html>
 <body>
 <?php
-    require 'nav.php';
-    require 'util.php';
+    require 'util/nav.php';
+    require 'util/util.php';
 ?>
 <h3>Add a new team:</h3>
 
@@ -23,7 +23,8 @@ if (isset($_POST['submit']))
 {
     $args = parse_args($_POST, array("home", "away", "court_num", "date"));
 
-    run_command('add_game', $args);
+    $result = backend('add_game', $args);
+    echo $result;
 }
 ?>
 
