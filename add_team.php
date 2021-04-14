@@ -22,7 +22,7 @@ if (isset($_POST['submit']))
 {
     $args = parse_args($_POST, array("name", "mascot", "tournamentSeed"));
 
-    $result = backend('add_team', $args);
+    $result = database('add_team', $args);
     print_r($result);
 }
 ?>

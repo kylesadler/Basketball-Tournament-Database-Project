@@ -1,8 +1,8 @@
 <?php
-function backend($python_command, $params = []) {
+function database($python_command, $params = []) {
     /* run command on backend. returns array containing returned values */
     
-    $command = 'python3 backend/api.py '.$python_command.' '.implode(' ', $params);
+    $command = 'python3 database/api.py '.$python_command.' '.implode(' ', $params);
     
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);

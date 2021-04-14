@@ -82,9 +82,9 @@ Tables:
 
 
 steps:
-get python functions working on command line
-figure out how to easily pass objects back and forth
-write php frontend to display results
+use php to write website. Anytime I need data, call database() to fetch
+
+write backend functions and test on command line
 
 
 
@@ -96,6 +96,3 @@ There must be at least 6 functions that use the database, at least 3 of which mo
 
 
 code / tech stack does not matter
-
-
-USE JSON!! to pass data

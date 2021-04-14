@@ -7,7 +7,7 @@
 <h3>View teams:</h3>
 
 <?php
-$teams = backend('view_teams');
+$teams = database('view_teams');
 print_r($teams);
 ?>
 
