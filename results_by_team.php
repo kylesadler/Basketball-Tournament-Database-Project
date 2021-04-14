@@ -36,6 +36,10 @@ if (isset($_POST['submit'])) {
 
     list($headers, $rows) = database('get_results_by_team_id', $args);
     print_table($headers, $rows);
+
+    echo '<script>
+        document.getElementById("teamID").value = "'.$args[0].'";
+        </script>';
 }
 ?>
 
