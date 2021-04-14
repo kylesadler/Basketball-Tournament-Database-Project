@@ -17,20 +17,9 @@
 <?php
 if (isset($_POST['submit'])) 
 {
-    // add ' ' around multiple strings so they are treated as single command line args
-    $name = escapeshellarg($_POST[name]);
-    $mascot = escapeshellarg($_POST[mascot]);
-    $tournamentSeed = escapeshellarg($_POST[tournamentSeed]);
+    $params = parse_args($_POST, array("name", "mascot", "tournamentSeed"));
 
-    // build the linux command that you want executed;  
-    $command = 'python3 backend/add_team.py ' . $name . ' ' . $mascot . ' ' . $tournamentSeed;
-
-    // remove dangerous characters from command to protect web server
-    $command = escapeshellcmd($command);
- 
-    // echo then run the command
-    echo "command: $command <br>";
-    system($command);           
+    run_command('add_team', $params);
 }
 ?>
 

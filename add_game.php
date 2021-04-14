@@ -18,21 +18,9 @@
 <?php
 if (isset($_POST['submit'])) 
 {
-    // add ' ' around multiple strings so they are treated as single command line args
-    $home = escapeshellarg($_POST[home]);
-    $away = escapeshellarg($_POST[away]);
-    $court_num = escapeshellarg($_POST[court_num]);
-    $date = escapeshellarg($_POST[date]);
+    $params = parse_args($_POST, array("home", "away", "court_num", "date"));
 
-    // build the linux command that you want executed;  
-    $command = 'python3 backend/add_game.py ' . $home . ' ' . $away . ' ' . $court_num . ' ' . $date;
-
-    // remove dangerous characters from command to protect web server
-    $command = escapeshellcmd($command);
- 
-    // echo then run the command
-    echo "command: $command <br>";
-    system($command);           
+    run_command('add_game', $params);
 }
 ?>
 
