@@ -7,11 +7,11 @@ function backend($python_command, $params = []) {
     $command = escapeshellcmd($command);
     
     // echo "command: $command <br>";
-    // system($command);    
+    // system($command);
+    
     $output = null;
-    // system($command);    
-    exec($command,$output);    
-    reutrn $output;
+    exec($command, $output);    
+    return $output;
 }
 
 function parse_args($post_body, $valid_params) {
