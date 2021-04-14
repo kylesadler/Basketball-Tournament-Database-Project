@@ -3,10 +3,90 @@ from sql_database import SQLDatabase
 
 """ NOTE: returns a string. May be html """
 
-# SQLDatabase
+MYSQL_USER = 'krs028' # please change to your username
+MYSQL_PASS ='PhoV9bi2'  # please change to your MySQL password
+database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
+
+
+
+""" 
+
+        query = f'''SELECT 
+                        SUPPLIER.ID AS SUPPLIER_ID,
+                        SUPPLIER.NAME AS SUPPLIER_NAME,
+                        SUPPLIER.PHONE_NUMBER AS SUPPLIER_PHONE_NUMBER,
+                        ITEM.NAME AS COFFEE_NAME,
+                        ITEM.ROASTING_TYPE
+                    FROM INVENTORY_MGMT
+                    INNER JOIN ITEM
+                    INNER JOIN SUPPLIER
+                    WHERE
+                        SUPPLIER.COUNTRY = '{clean_input(country)}'
+                        AND INVENTORY_MGMT.ITEM_ID = ITEM.ID
+                        AND INVENTORY_MGMT.SUPPLIER_ID = SUPPLIER.ID;'''
+        
+
+        headers, rows = self.database.select(query)
+
+
+
+
+
+
+        supplier_id = self.generate_unique_id('SUPPLIER')
+        self.database.insert('SUPPLIER', f"{supplier_id},'{name}',{number},'{country}'")
+
+        self.database.insert('INVENTORY_MGMT', f"{item_id},{supplier_id},0,0")
+
+
+        # print new supplier and other suppliers with same item
+        print("New supplier created.")
+        print_table(*self.database.select(f"SELECT * FROM SUPPLIER WHERE ID = {supplier_id};"))
+
+        print("\nOther suppliers that provide the same item:")
+        print_table(*self.database.select(
+            f'''SELECT
+                SUPPLIER.NAME
+            FROM INVENTORY_MGMT
+            INNER JOIN SUPPLIER
+            WHERE
+                SUPPLIER.ID = INVENTORY_MGMT.SUPPLIER_ID
+                AND INVENTORY_MGMT.ITEM_ID = {item_id}
+                AND INVENTORY_MGMT.SUPPLIER_ID != {supplier_id};'''
+        ))
+
+
+
+        self.database.update(
+            f'''Update INVENTORY_MGMT
+            SET TOTAL_AVAILABLE = {new_available}
+            WHERE ITEM_ID = {item_id};'''
+            )
+
+"""
 
 def add_game(home, away, court, date):
     print(f"adding game {home} {away} {court} {date} <br> <br>")
+
+    query = f'''SELECT 
+                    SUPPLIER.ID AS SUPPLIER_ID,
+                    SUPPLIER.NAME AS SUPPLIER_NAME,
+                    SUPPLIER.PHONE_NUMBER AS SUPPLIER_PHONE_NUMBER,
+                    ITEM.NAME AS COFFEE_NAME,
+                    ITEM.ROASTING_TYPE
+                FROM INVENTORY_MGMT
+                INNER JOIN ITEM
+                INNER JOIN SUPPLIER
+                WHERE
+                    SUPPLIER.COUNTRY = 'USA'
+                    AND INVENTORY_MGMT.ITEM_ID = ITEM.ID
+                    AND INVENTORY_MGMT.SUPPLIER_ID = SUPPLIER.ID;'''
+    
+
+    headers, rows = database.select(query)
+    print(headers)
+    print("<br><br>")
+    print(rows)
 
 def add_team(name, mascot, seed):
     print(f"adding team {name} {mascot} as {seed} seed <br> <br>")
