@@ -40,7 +40,7 @@ function parse_args($post_body, $valid_params) {
 }
 
 function print_table($headers, $rows) {
-    echo '<table>';
+    echo '<table class="styled-table">';
     echo '<tr>';
     
     foreach ($headers as $i => $h) {
