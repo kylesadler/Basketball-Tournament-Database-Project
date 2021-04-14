@@ -23,7 +23,7 @@ if (isset($_POST['submit']))
     $tournamentSeed = escapeshellarg($_POST[tournamentSeed]);
 
     // build the linux command that you want executed;  
-    $command = 'python3 backend/hello.py ' . $name . ' ' . $mascot . ' ' . $tournamentSeed;
+    $command = 'python3 backend/add_team.py ' . $name . ' ' . $mascot . ' ' . $tournamentSeed;
 
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);
