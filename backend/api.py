@@ -1,13 +1,13 @@
 import sys
 
-COMMAND_TO_FUNCTION = {
-    'add_game': add_game,
-}
-
 def add_game(home, away, court, date):
     print(f"adding game {home} {away} {court} {date} <br> <br>")
 
 
+
+COMMAND_TO_FUNCTION = {
+    'add_game': add_game,
+}
 
 
 if __name__ == '__main__':
