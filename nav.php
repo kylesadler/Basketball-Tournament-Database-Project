@@ -1,1 +1,1 @@
-<a href="/index.php">Home</a>
+<a href="/~krs028/index.php">Home</a>
