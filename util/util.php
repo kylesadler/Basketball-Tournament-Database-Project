@@ -8,9 +8,10 @@ function backend($python_command, $params = []) {
     
     // echo "command: $command <br>";
     // system($command);
-    
+
     $output = null;
-    exec($command, $output);    
+    $return_code = null;
+    exec($command, $output, $return_code);    
     return $output;
 }
 
