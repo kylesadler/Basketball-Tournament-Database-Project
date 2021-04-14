@@ -124,7 +124,7 @@ def get_results_by_team_id(id):
         INNER JOIN RESULT
         WHERE
             TEAM.ID = '{util.clean_input(id)}'
-            AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID),
+            AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
             AND RESULT.GAME_ID = GAME.ID;'''
 
     return database.select(query)

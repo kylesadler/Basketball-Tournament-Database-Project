@@ -19,7 +19,7 @@
         <?php
             foreach ($teams as $i => $team) {
                 // value is ID, text is Name Mascots
-                echo '<option value="'.$team[2].'">'.$team[0].$team[1].'</option>';
+                echo '<option value="'.$team[2].'">'.$team[0].' '.$team[1].'</option>';
             }
         ?>
     </select>

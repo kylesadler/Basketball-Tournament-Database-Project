@@ -40,3 +40,26 @@ write the database api to contain high level database functions such as
 
 test these on the command line
 
+
+
+
+
+
+SELECT
+   TEAM.NAME,
+   GAME.HOME_TEAM_ID AS HOME,
+   GAME.AWAY_TEAM_ID AS AWAY,
+   GAME.COURT_NUM AS CourtNumber,
+   GAME.DATE AS Date,
+   RESULT.HOME_TEAM_SCORE AS HomeScore,
+   RESULT.AWAY_TEAM_SCORE AS AwayScore
+FROM TEAM
+INNER JOIN GAME
+INNER JOIN RESULT
+WHERE
+   TEAM.ID = '1'
+   AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
+   AND RESULT.GAME_ID = GAME.ID;
+
+
+
