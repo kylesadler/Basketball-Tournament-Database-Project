@@ -6,12 +6,12 @@ import json
 """ random util functions. May be useful """
 
 
-def get_user_input(message):
-    """ promts users for input. throws InputIsEmptyError on empty input """
-    user_input = input(message)
-    if not isinstance(user_input, str) or len(user_input) <= 0:
-        raise EmptyInputError()
-    return user_input
+# def get_user_input(message):
+#     """ promts users for input. throws InputIsEmptyError on empty input """
+#     user_input = input(message)
+#     if not isinstance(user_input, str) or len(user_input) <= 0:
+#         raise EmptyInputError()
+#     return user_input
 
 def get_option_from_user(message, options):
     """ get_option_from_user() prompts the user with message, reads an input string,
@@ -37,11 +37,11 @@ def get_option_from_user(message, options):
                 raise InvalidInputError()
             return selected_options[0]
 
-def confirm(question, default):
-    """ asks a yes/no question to the user and converts their answer to a boolean """
-    assert default.lower() in ['y', 'n']
-    confirm = input(question) or default
-    return confirm.lower() in ['yes', 'y']
+# def confirm(question, default):
+#     """ asks a yes/no question to the user and converts their answer to a boolean """
+#     assert default.lower() in ['y', 'n']
+#     confirm = input(question) or default
+#     return confirm.lower() in ['yes', 'y']
 
 # def print_error(message):
 #     """ prints an error message """

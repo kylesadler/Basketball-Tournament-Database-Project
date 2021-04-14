@@ -85,17 +85,16 @@ def add_game(home, away, court, date):
                     AND INVENTORY_MGMT.SUPPLIER_ID = SUPPLIER.ID;'''
     
 
-    headers, rows = database.select(query)
-    util.send([headers, rows])
+    return database.select(query)
 
 def add_team(name, mascot, seed):
-    util.send(f"adding team {name} {mascot} as {seed} seed <br> <br>")
+    return f"adding team {name} {mascot} as {seed} seed <br> <br>"
 
 def add_result(game, home, away):
-    util.send(f"adding result {game} {home} {away} <br> <br>")
+    return f"adding result {game} {home} {away} <br> <br>"
 
 def view_teams(game, home, away):
-    util.send(f"viewing teams <br> <br>")
+    return f"viewing teams <br> <br>"
 
 
 
@@ -115,7 +114,8 @@ if __name__ == '__main__':
     # print(f"running {command} on arguments: {', '.join(args)} <br> <br>")
 
     try:
-        COMMAND_TO_FUNCTION[command](*args)
+        output = COMMAND_TO_FUNCTION[command](*args)
+        util.send(output)
     except TypeError:
         print("ERROR")
         print("incorrect number of arguments\n")
