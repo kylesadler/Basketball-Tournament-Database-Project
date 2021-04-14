@@ -23,8 +23,9 @@ if (isset($_POST['submit']))
 {
     $args = parse_args($_POST, array("home", "away", "court_num", "date"));
 
-    $result = backend('add_game', $args);
-    print_r($result);
+    list($headers, $rows) = backend('add_game', $args);
+    print_r($headers);
+    print_r($rows);
 }
 ?>
 
