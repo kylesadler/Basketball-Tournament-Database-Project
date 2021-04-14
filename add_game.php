@@ -21,9 +21,9 @@
 <?php
 if (isset($_POST['submit'])) 
 {
-    $params = parse_args($_POST, array("home", "away", "court_num", "date"));
+    $args = parse_args($_POST, array("home", "away", "court_num", "date"));
 
-    run_command('add_game', $params);
+    run_command('add_game', $args);
 }
 ?>
 

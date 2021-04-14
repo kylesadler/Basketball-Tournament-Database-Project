@@ -20,9 +20,9 @@
 <?php
 if (isset($_POST['submit'])) 
 {
-    $params = parse_args($_POST, array("name", "mascot", "tournamentSeed"));
+    $args = parse_args($_POST, array("name", "mascot", "tournamentSeed"));
 
-    run_command('add_team', $params);
+    run_command('add_team', $args);
 }
 ?>
 
