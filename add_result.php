@@ -2,7 +2,7 @@
 <body>
 <?php
     require 'nav.php';
-    require "util.php";
+    require 'util.php';
 ?>
 <h3>Add a new team:</h3>
 

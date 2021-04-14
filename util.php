@@ -14,7 +14,7 @@ function parse_args($post_body, $valid_params) {
     $params = array();
     
     foreach ($post_body as $param_name => $param_val) {
-        if (in_array($param_name, $valid_params) {
+        if (in_array($param_name, $valid_params)) {
             array_push($params, escapeshellarg($post_body[$param_name]));
         }
         echo "Param: $param_name; Value: $param_val<br />\n";
