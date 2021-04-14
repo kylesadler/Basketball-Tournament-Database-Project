@@ -3,8 +3,8 @@ from sql_database import SQLDatabase
 
 """ NOTE: returns a string. May be html """
 
-MYSQL_USER = 'krs028' # please change to your username
-MYSQL_PASS ='PhoV9bi2'  # please change to your MySQL password
+MYSQL_USER = 'krs028'
+MYSQL_PASS ='PhoV9bi2'
 database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 
@@ -85,7 +85,6 @@ def add_game(home, away, court, date):
 
     headers, rows = database.select(query)
     print(headers)
-    print("<br><br>")
     print(rows)
 
 def add_team(name, mascot, seed):

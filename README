@@ -92,3 +92,9 @@ Tables:
    Game: ID, HomeTeamID, AwayTeamID, CourtNumber, Date
    Result: GameID, HomeScore, AwayScore
 
+
+
+steps:
+get python functions working on command line
+figure out how to easily pass objects back and forth
+write php frontend to display results
