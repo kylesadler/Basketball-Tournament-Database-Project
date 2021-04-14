@@ -20,7 +20,7 @@ function backend($python_command, $params = []) {
 
     $json_string = implode("\n", $output);
 
-    return json_decode($json_string, $true)["return"];
+    return json_decode($json_string, true)["return"];
 }
 
 function parse_args($post_body, $valid_params) {

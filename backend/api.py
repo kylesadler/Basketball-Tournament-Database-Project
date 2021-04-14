@@ -68,7 +68,7 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 """
 
 def add_game(home, away, court, date):
-    util.send(f"adding game {home} {away} {court} {date} <br> <br>")
+    # util.send(f"adding game {home} {away} {court} {date} <br> <br>")
 
     query = f'''SELECT 
                     SUPPLIER.ID AS SUPPLIER_ID,
