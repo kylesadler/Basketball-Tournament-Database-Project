@@ -11,7 +11,11 @@ function backend($python_command, $params = []) {
 
     $output = null;
     $return_code = null;
-    exec($command, $output, $return_code);    
+    exec($command, $output, $return_code);
+
+    if ($return_code != 0 || $output[0] == "ERROR") {
+        throw new Exception(implode('\n', $output));
+    }
     return $output;
 }
 

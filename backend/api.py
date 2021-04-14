@@ -32,13 +32,16 @@ if __name__ == '__main__':
     command = sys.argv[1]
     args = sys.argv[2:]   
 
-    print(f"running {command} on arguments: {', '.join(args)} <br> <br>")
+    # print(f"running {command} on arguments: {', '.join(args)} <br> <br>")
 
     try:
         COMMAND_TO_FUNCTION[command](*args)
     except TypeError:
+        print("ERROR")
         print("incorrect number of arguments\n")
+        raise
     except Exception as e:
+        print("ERROR")
         print(str(e))
-        print()
+        raise
 
