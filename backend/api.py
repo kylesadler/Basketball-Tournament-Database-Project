@@ -68,7 +68,7 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 """
 
 def add_game(home, away, court, date):
-    print(f"adding game {home} {away} {court} {date} <br> <br>")
+    util.send(f"adding game {home} {away} {court} {date} <br> <br>")
 
     query = f'''SELECT 
                     SUPPLIER.ID AS SUPPLIER_ID,
@@ -89,13 +89,13 @@ def add_game(home, away, court, date):
     util.send([headers, rows])
 
 def add_team(name, mascot, seed):
-    print(f"adding team {name} {mascot} as {seed} seed <br> <br>")
+    util.send(f"adding team {name} {mascot} as {seed} seed <br> <br>")
 
 def add_result(game, home, away):
-    print(f"adding result {game} {home} {away} <br> <br>")
+    util.send(f"adding result {game} {home} {away} <br> <br>")
 
 def view_teams(game, home, away):
-    print(f"viewing teams <br> <br>")
+    util.send(f"viewing teams <br> <br>")
 
 
 
