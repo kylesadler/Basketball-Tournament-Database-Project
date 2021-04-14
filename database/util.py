@@ -73,7 +73,7 @@ def clean_input(query):
 
 
 
-NON_SERIALIZABLE_CLASSES = [ ObjectId, datetime, timedelta ]
+NON_SERIALIZABLE_CLASSES = [ datetime, timedelta ]
 
 def is_non_serializable(object_):
     """ returns True if object_ cannot be serialized in json """
