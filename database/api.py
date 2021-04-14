@@ -93,7 +93,7 @@ def add_team(name, mascot, seed):
 def add_result(game, home, away):
     return f"adding result {game} {home} {away} <br> <br>"
 
-def view_teams(game, home, away):
+def get_teams():
     return f"viewing teams <br> <br>"
 
 
@@ -104,7 +104,7 @@ COMMAND_TO_FUNCTION = {
     'add_game': add_game,
     'add_team': add_team,
     'add_result': add_result,
-    'view_teams': view_teams,
+    'get_teams': get_teams,
 }
 
 
