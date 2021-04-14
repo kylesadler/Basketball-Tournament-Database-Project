@@ -138,6 +138,8 @@ COMMAND_TO_FUNCTION = {
     'add_team': add_team,
     'add_result': add_result,
     'get_teams': get_teams,
+    'get_team_name_mascot_id': get_team_name_mascot_id,
+    'get_results_by_team_id': get_results_by_team_id,
 }
 
 
