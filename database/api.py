@@ -94,7 +94,22 @@ def add_result(game, home, away):
     return f"adding result {game} {home} {away} <br> <br>"
 
 def get_teams():
-    return f"viewing teams <br> <br>"
+    
+    query = f'''SELECT 
+            SUPPLIER.ID AS SUPPLIER_ID,
+            SUPPLIER.NAME AS SUPPLIER_NAME,
+            SUPPLIER.PHONE_NUMBER AS SUPPLIER_PHONE_NUMBER,
+            ITEM.NAME AS COFFEE_NAME,
+            ITEM.ROASTING_TYPE
+        FROM INVENTORY_MGMT
+        INNER JOIN ITEM
+        INNER JOIN SUPPLIER
+        WHERE
+            SUPPLIER.COUNTRY = 'USA'
+            AND INVENTORY_MGMT.ITEM_ID = ITEM.ID
+            AND INVENTORY_MGMT.SUPPLIER_ID = SUPPLIER.ID;'''
+
+    return database.select(query)
 
 
 
