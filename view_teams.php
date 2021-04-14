@@ -1,6 +1,7 @@
 <html>
 <body>
 <?php
+    require 'util/style.php';
     require 'util/nav.php';
     require 'util/util.php';
 ?>

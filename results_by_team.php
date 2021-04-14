@@ -1,20 +1,17 @@
 <html>
 <body>
 <?php
+    require 'util/style.php';
     require 'util/nav.php';
     require 'util/util.php';
-?>
-
-
-<?php
-   list($headers, $teams) = database('get_team_name_mascot_id');
+    list($headers, $teams) = database('get_team_name_mascot_id');
 ?>
 
 <h3>Results by Team</h3>
 
 <form action="results_by_team.php" method="post">
 
-    Select a Team: 
+    Select a team: 
     <select name="teamID" id="teamID">
         <?php
             foreach ($teams as $i => $team) {
@@ -26,22 +23,18 @@
     
     <input name="submit" type="submit" >
 </form>
-<br><br>
-
-<h3>View teams:</h3>
 <?php
 if (isset($_POST['submit'])) {
-
+    
     $args = parse_args($_POST, array("teamID"));
-
+    
     list($headers, $rows) = database('get_results_by_team_id', $args);
     print_table($headers, $rows);
-
-    echo '<script>
-        document.getElementById("teamID").value = "'.$args[0].'";
-        </script>';
+    
+    echo '<script> document.getElementById("teamID").value = '.$args[0].'; </script>';
 }
 ?>
 
+<br><br>
 </body>
 </html>
