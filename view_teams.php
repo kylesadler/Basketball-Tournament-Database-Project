@@ -8,7 +8,7 @@
 
 <?php
 $teams = backend('view_teams');
-echo $teams;
+print_r($teams);
 ?>
 
 

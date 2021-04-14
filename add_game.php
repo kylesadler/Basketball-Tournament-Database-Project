@@ -24,7 +24,7 @@ if (isset($_POST['submit']))
     $args = parse_args($_POST, array("home", "away", "court_num", "date"));
 
     $result = backend('add_game', $args);
-    echo $result;
+    print_r($result);
 }
 ?>
 
