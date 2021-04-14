@@ -7,7 +7,7 @@
 
 
 <?php
-    $teams = database('get_team_name_mascot_id');
+   list($headers, $teams) = database('get_team_name_mascot_id');
 ?>
 
 <h3>Results by Team</h3>
