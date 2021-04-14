@@ -94,29 +94,16 @@ def add_result(game, home, away):
     return f"adding result {game} {home} {away} <br> <br>"
 
 def get_teams():
-    
     query = f'''SELECT 
-            SUPPLIER.ID AS SUPPLIER_ID,
-            SUPPLIER.NAME AS SUPPLIER_NAME,
-            SUPPLIER.PHONE_NUMBER AS SUPPLIER_PHONE_NUMBER,
-            ITEM.NAME AS COFFEE_NAME,
-            ITEM.ROASTING_TYPE
-        FROM INVENTORY_MGMT
-        INNER JOIN ITEM
-        INNER JOIN SUPPLIER
-        WHERE
-            SUPPLIER.COUNTRY = 'USA'
-            AND INVENTORY_MGMT.ITEM_ID = ITEM.ID
-            AND INVENTORY_MGMT.SUPPLIER_ID = SUPPLIER.ID;'''
+            ID, NAME, MASCOT, TOURNAMENT_SEED
+        FROM TEAM;'''
 
     return database.select(query)
 
 
 def get_team_name_mascot_id():
     query = f'''SELECT 
-        NAME,
-        MASCOT,
-        ID
+        NAME, MASCOT, ID
     FROM TEAM;'''
 
     return database.select(query)
@@ -126,24 +113,21 @@ def get_results_by_team_id(id):
     
     query = f'''SELECT 
             TEAM.NAME,
-            GAME.HomeTeamID AS HOME,
-            GAME.AwayTeamID AS AWAY,
-            GAME.CourtNumber AS CourtNumber,
-            GAME.Date AS Date,
-            Result.HomeScore AS HomeScore,
-            Result.AwayScore AS AwayScore
+            GAME.HOME_TEAM_ID AS HOME,
+            GAME.AWAY_TEAM_ID AS AWAY,
+            GAME.COURT_NUM AS CourtNumber,
+            GAME.DATE AS Date,
+            RESULT.HOME_TEAM_SCORE AS HomeScore,
+            RESULT.AWAY_TEAM_SCORE AS AwayScore
         FROM TEAM
         INNER JOIN GAME
         INNER JOIN RESULT
         WHERE
             TEAM.ID = '{util.clean_input(id)}'
-            AND Result.GameID = GAME.ID;'''
+            AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID),
+            AND RESULT.GAME_ID = GAME.ID;'''
 
     return database.select(query)
-
-Team: ID, Name, Mascot, TournamentSeed
-Game: ID, HomeTeamID, AwayTeamID, CourtNumber, Date
-Result: GameID, HomeScore, AwayScore
 
 
 
