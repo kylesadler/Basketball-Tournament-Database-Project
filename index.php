@@ -1,5 +1,6 @@
 <html>
 <body>
+<?php require 'nav.php'; ?>
 <h3>Enter your name:</h3>
 
 <form action="index.php" method="post">
