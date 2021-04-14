@@ -38,4 +38,26 @@ function parse_args($post_body, $valid_params) {
 
     return $params;
 }
+
+function print_table($headers, $rows) {
+    echo '<table>';
+    echo '<tr>';
+    
+    foreach ($headers as $i => $h) {
+        echo '<th>'.$h.'</th>';
+    }
+
+    echo '</tr>';
+
+    
+    foreach ($rows as $i => $row) {
+        echo '<tr>';
+        foreach ($row as $j => $x) {
+            echo '<td>'.$x.'</td>';
+        }
+        echo '</tr>';
+    }
+
+    echo '</table>';
+}
 ?>
