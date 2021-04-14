@@ -2,7 +2,7 @@
 # from tabulate import tabulate
 
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 """ random util functions. May be useful """
 
@@ -73,7 +73,7 @@ def clean_input(query):
 
 
 
-NON_SERIALIZABLE_CLASSES = [ datetime, timedelta ]
+NON_SERIALIZABLE_CLASSES = [ datetime, timedelta, date ]
 
 def is_non_serializable(object_):
     """ returns True if object_ cannot be serialized in json """
