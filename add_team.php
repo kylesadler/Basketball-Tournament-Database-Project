@@ -1,6 +1,9 @@
 <html>
 <body>
-<?php require 'nav.php'; ?>
+<?php
+    require 'nav.php';
+    require 'util.php';
+?>
 <h3>Add a new team:</h3>
 
 <form action="add_team.php" method="post">
