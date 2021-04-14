@@ -112,6 +112,42 @@ def get_teams():
     return database.select(query)
 
 
+def get_team_name_mascot_id():
+    query = f'''SELECT 
+        NAME,
+        MASCOT,
+        ID
+    FROM TEAM;'''
+
+    return database.select(query)
+
+
+def get_results_by_team_id(id):
+    
+    query = f'''SELECT 
+            TEAM.NAME,
+            GAME.HomeTeamID AS HOME,
+            GAME.AwayTeamID AS AWAY,
+            GAME.CourtNumber AS CourtNumber,
+            GAME.Date AS Date,
+            Result.HomeScore AS HomeScore,
+            Result.AwayScore AS AwayScore
+        FROM TEAM
+        INNER JOIN GAME
+        INNER JOIN RESULT
+        WHERE
+            TEAM.ID = '{util.clean_input(id)}'
+            AND Result.GameID = GAME.ID;'''
+
+    return database.select(query)
+
+Team: ID, Name, Mascot, TournamentSeed
+Game: ID, HomeTeamID, AwayTeamID, CourtNumber, Date
+Result: GameID, HomeScore, AwayScore
+
+
+
+
 
 COMMAND_TO_FUNCTION = {
     'add_game': add_game,

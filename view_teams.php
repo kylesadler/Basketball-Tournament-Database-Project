@@ -8,13 +8,8 @@
 
 <?php
     list($headers, $rows) = database('get_teams');
-
     print_table($headers, $rows);
-
 ?>
-
-
-<br><br>
 
 </body>
 </html>
