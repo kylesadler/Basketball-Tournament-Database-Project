@@ -1,7 +1,7 @@
 <?php
 
 function run_command($python_command, $params = []) {
-    $command = 'python3 backend/api.py ' . $python_command . implode(' ', $params);
+    $command = 'python3 backend/api.py ' . $python_command . ' ' . implode(' ', $params);
     
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);
