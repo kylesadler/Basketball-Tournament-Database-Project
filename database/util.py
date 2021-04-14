@@ -82,7 +82,7 @@ def is_non_serializable(object_):
 def remove_non_serializable_fields(obj):
     if is_non_serializable(obj):
         obj = str(obj)
-    elif isinstance(obj, list):
+    elif isinstance(obj, list) or isinstance(obj, tuple):
         obj = [remove_non_serializable_fields(x) for x in obj]
     elif isinstance(obj, dict):
         for key, value in obj.items():
