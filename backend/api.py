@@ -1,7 +1,9 @@
 import sys
 from sql_database import SQLDatabase
+# from util import *
+import util
 
-""" NOTE: returns a string. May be html """
+""" NOTE: return a list of objects. May be html strings """
 
 MYSQL_USER = 'krs028'
 MYSQL_PASS ='PhoV9bi2'
@@ -84,8 +86,7 @@ def add_game(home, away, court, date):
     
 
     headers, rows = database.select(query)
-    print(headers)
-    print(rows)
+    util.send([headers, rows])
 
 def add_team(name, mascot, seed):
     print(f"adding team {name} {mascot} as {seed} seed <br> <br>")

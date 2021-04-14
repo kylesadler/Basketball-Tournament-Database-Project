@@ -1,6 +1,8 @@
 # from .errors import *
 # from tabulate import tabulate
 
+import json
+
 """ random util functions. May be useful """
 
 
@@ -41,20 +43,20 @@ def confirm(question, default):
     confirm = input(question) or default
     return confirm.lower() in ['yes', 'y']
 
-def print_error(message):
-    """ prints an error message """
-    print(f"ERROR: {message}")
+# def print_error(message):
+#     """ prints an error message """
+#     print(f"ERROR: {message}")
 
-def print_options(a_list):
-    """ prints a nicely formatted numbered list of strings """
-    space = ' '*3
-    formatted_options = [
-        f'{space}{i+1}) {thing.title()}' for i, thing in enumerate(a_list)
-        ]
-    print('\n' + '\n'.join(formatted_options) + '\n')
+# def print_options(a_list):
+#     """ prints a nicely formatted numbered list of strings """
+#     space = ' '*3
+#     formatted_options = [
+#         f'{space}{i+1}) {thing.title()}' for i, thing in enumerate(a_list)
+#         ]
+#     print('\n' + '\n'.join(formatted_options) + '\n')
 
-def print_table(headers, rows):
-    print(f'{tabulate(rows, headers=headers)}\n')
+# def print_table(headers, rows):
+#     print(f'{tabulate(rows, headers=headers)}\n')
 
 
 def clean_input(query):
@@ -65,3 +67,6 @@ def clean_input(query):
         query = query.replace(c, "")
 
     return query.upper()
+
+def send(object):
+    print(json.dumps({"return": object}))

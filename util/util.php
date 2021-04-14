@@ -1,7 +1,8 @@
 <?php
 function backend($python_command, $params = []) {
-    /* run command on backend. returns array with output lines */
-    $command = 'python3 backend/api.py ' . $python_command . ' ' . implode(' ', $params);
+    /* run command on backend. returns array containing returned values */
+    
+    $command = 'python3 backend/api.py '.$python_command.' '.implode(' ', $params);
     
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);
@@ -16,7 +17,10 @@ function backend($python_command, $params = []) {
     if ($return_code != 0 || $output[0] == "ERROR") {
         throw new Exception(implode('\n', $output));
     }
-    return $output;
+
+    $json_string = implode("\n", $output);
+
+    return json_decode($json_string, $true)["return"];
 }
 
 function parse_args($post_body, $valid_params) {
