@@ -7,8 +7,8 @@
 <h3>View teams:</h3>
 
 <?php
-$teams = database('get_teams');
-print_r($teams);
+    $teams = database('get_teams');
+    print_r($teams);
 ?>
 
 

@@ -98,14 +98,14 @@ def get_teams():
 
 
 
-
-
 COMMAND_TO_FUNCTION = {
     'add_game': add_game,
     'add_team': add_team,
     'add_result': add_result,
     'get_teams': get_teams,
 }
+
+
 
 
 if __name__ == '__main__':
