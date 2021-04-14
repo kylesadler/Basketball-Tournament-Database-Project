@@ -104,6 +104,7 @@ COMMAND_TO_FUNCTION = {
     'add_game': add_game,
     'add_team': add_team,
     'add_result': add_result,
+    'view_teams': view_teams,
 }
 
 
