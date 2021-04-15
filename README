@@ -1,23 +1,10 @@
 
-at least 6 functions, each of which is achieved through a database call. 10 point BONUS: Add a 7th, complex function
 
-There must be at least 6 functions that use the database, at least 3 of which modify the table contents in some way (i.e., add, insert, delete, or modify) and at least one of which combines information from multiple tables to produce the resulting web page. 
+TODO
+scrub data
+fix formatting
+write report
 
-
-code / tech stack does not matter
-
-Relational DB with 3 tables
-Website with 7 functions
-   CRUD team
-   CRUD game
-   CRUD result
-   CRUD player
-   view all teams
-   view all results per team
-   view all results on date
-
-Home page
-Navigation buttons
 
 all commands execute from /home/krs028/public_html as www-data user
 
@@ -26,23 +13,3 @@ Tables:
    Player: ID, TeamID, Name, Position
    Game: ID, HomeTeamID, AwayTeamID, CourtNumber, Date
    Result: GameID, HomeScore, AwayScore
-
-
-
-steps:
-use php to write website. Anytime I need data, call database() to fetch
-
-write the database api to contain high level database functions such as
-   get_teams
-   get_roster
-   get_games_on_date
-   etc.
-
-test these on the command line
-
-
-
-results by team x
-roster by team x
-result by date x
-
