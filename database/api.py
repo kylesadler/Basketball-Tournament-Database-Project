@@ -111,21 +111,24 @@ def get_team_name_mascot_id():
 
 def get_results_by_team_id(id):
     
-    query = f'''SELECT 
-            TEAM.NAME,
-            GAME.HOME_TEAM_ID AS HOME,
-            GAME.AWAY_TEAM_ID AS AWAY,
-            GAME.COURT_NUM AS CourtNumber,
-            GAME.DATE AS Date,
-            RESULT.HOME_TEAM_SCORE AS HomeScore,
-            RESULT.AWAY_TEAM_SCORE AS AwayScore
-        FROM TEAM
-        INNER JOIN GAME
-        INNER JOIN RESULT
-        WHERE
-            TEAM.ID = '{util.clean_input(id)}'
-            AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
-            AND RESULT.GAME_ID = GAME.ID;'''
+    query = f'''SELECT
+                GAME.HOME_TEAM_ID AS HOME_ID,
+                (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_NAME,
+                (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_MASCOT,
+                RESULT.HOME_TEAM_SCORE AS HOME_SCORE,
+                GAME.AWAY_TEAM_ID AS AWAY_ID,
+                (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_NAME,
+                (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_MASCOT,
+                RESULT.AWAY_TEAM_SCORE AS AWAY_SCORE,
+                GAME.COURT_NUM AS COURT_NUMBER,
+                GAME.DATE AS DATE
+            FROM TEAM
+            INNER JOIN GAME
+            INNER JOIN RESULT
+            WHERE
+                TEAM.ID = '{util.clean_input(id)}'
+                AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
+                AND RESULT.GAME_ID = GAME.ID;'''
 
     return database.select(query)
 
