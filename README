@@ -1,6 +1,12 @@
 
 TODO
-improve CSS
+error checking
+   manage players
+   manage games
+   manage teams
+
+   
+
 write report
 
 all commands execute from /home/krs028/public_html as www-data user

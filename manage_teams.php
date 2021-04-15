@@ -20,7 +20,11 @@ if (isset($_POST['submit']))
 {
     $args = parse_args($_POST, array("name", "mascot", "tournamentSeed"));
 
-    database('add_team', $args);
+    try {
+        database('add_team', $args);
+    } catch (Exception $e) {
+        echo('<b style="color:red">Invalid input.</b>');
+    }
 }
 
 list($headers, $rows) = database('get_teams');

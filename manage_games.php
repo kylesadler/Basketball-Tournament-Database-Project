@@ -33,7 +33,11 @@ if (isset($_POST['submit']))
 {
     $args = parse_args($_POST, array("home", "away", "court_num", "date"));
 
-    database('add_game', $args);
+    try {
+        database('add_game', $args);
+    } catch (Exception $e) {
+        echo('<b style="color:red">Invalid input.</b>');
+    }
 }
 
 
