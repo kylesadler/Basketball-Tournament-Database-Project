@@ -38,13 +38,13 @@ if (isset($_POST['submit'])) {
         
         $data = array_combine($keys, $value);
 
-        $result = ($data['HOME_NAME'] == $_POST['teamID']) == ($data['HOME_SCORE'] > $data['AWAY_SCORE']);
+        $result = ($data['HOME_ID'] == $_POST['teamID']) == ($data['HOME_SCORE'] > $data['AWAY_SCORE']);
 
         $row = array(
             $data['HOME_NAME'].' '.$data['HOME_MASCOT'],
             $data['AWAY_NAME'].' '.$data['AWAY_MASCOT'],
             $data['HOME_SCORE'].'-'.$data['AWAY_SCORE'],
-            $result ? 'Win' : 'Loss';,
+            $result ? 'Win' : 'Loss',
             $data['COURT_NUMBER'],
             $data['DATE']
         );
