@@ -7,7 +7,7 @@
 ?>
 <h3>Add a new team:</h3>
 
-<form action="add_result.php" method="post">
+<form action="manage_results.php" method="post">
     Game: <input type="text" name="game"><br>
     Home Team Score: <input type="text" name="home"><br>
     Away Team Score: <input type="text" name="away"><br>

@@ -7,7 +7,7 @@
 ?>
 <h3>Add a new player:</h3>
 
-<form action="add_team.php" method="post">
+<form action="manage_rosters.php" method="post">
     Name: <input type="text" name="name"><br>
     Mascot: <input type="text" name="mascot"><br>
     Tournament Seed: <input type="text" name="tournamentSeed"><br>
