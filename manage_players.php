@@ -10,6 +10,7 @@
 
 <form action="manage_players.php" method="post">
     Name: <input type="text" name="name"><br>
+    Position: <input type="text" name="position"><br>
     Team: <select name="teamId" id="teamId">
             <?php
                 foreach ($teams as $i => $team) {
@@ -17,7 +18,6 @@
                 }
             ?>
         </select><br>
-    Position: <input type="text" name="position"><br>
     <input name="submit" type="submit" >
 </form>
 
