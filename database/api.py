@@ -74,7 +74,7 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 def add_game(home, away, court, date):
     _id = database.generate_unique_id('GAME')
-    database.insert('GAME', f"{_id},{home},{away},{court},STR_TO_DATE({date},'%m/%d/%Y')")
+    database.insert('GAME', f"{_id},{home},{away},{court},STR_TO_DATE('{date}','%m/%d/%Y')")
 
 def add_team(name, mascot, seed):
 
