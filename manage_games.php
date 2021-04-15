@@ -23,7 +23,7 @@ if (isset($_POST['submit']))
     database('add_game', $args);
 }
 
-list($headers, $rows) = database('get_games');
+list($headers, $rows) = database('get_games_and_results');
 print_table($headers, $rows);
 ?>
 

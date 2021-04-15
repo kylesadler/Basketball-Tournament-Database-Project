@@ -97,6 +97,24 @@ def get_results():
 def get_games():
     return database.select('SELECT * FROM GAME;')
 
+def get_games_and_results():
+    return database.select(
+        f'''SELECT
+            GAME.HOME_TEAM_ID AS HOME_ID,
+            (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_NAME,
+            (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_MASCOT,
+            RESULT.HOME_TEAM_SCORE AS HOME_SCORE,
+            GAME.AWAY_TEAM_ID AS AWAY_ID,
+            (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_NAME,
+            (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_MASCOT,
+            RESULT.AWAY_TEAM_SCORE AS AWAY_SCORE,
+            GAME.COURT_NUM AS COURT_NUMBER,
+            GAME.DATE AS DATE
+        FROM GAME
+        LEFT JOIN RESULT
+            ON GAME.ID = RESULT.GAME_ID;'''
+        )
+
 def get_players():
     return database.select('SELECT * FROM PLAYER;')
 
