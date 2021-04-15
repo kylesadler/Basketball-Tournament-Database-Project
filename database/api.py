@@ -121,7 +121,16 @@ def get_games_and_results():
         )
 
 def get_players():
-    return database.select('SELECT * FROM PLAYER;')
+    return database.select(
+        '''SELECT 
+            PLAYER.NAME AS NAME,
+            PLAYER.POSITION AS POSITION,
+            TEAM.NAME AS TEAM_NAME,
+            TEAM.MASCOT AS TEAM_MASCOT
+        FROM PLAYER
+        INNER JOIN TEAM
+            WHERE PLAYER.TEAM_ID = TEAM.ID;'''
+        )
 
 def get_roster():
     return database.select('SELECT * FROM PLAYER;')

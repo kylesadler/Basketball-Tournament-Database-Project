@@ -8,7 +8,7 @@
 ?>
 <h3>Add a new player:</h3>
 
-<form action="manage_rosters.php" method="post">
+<form action="manage_players.php" method="post">
     Name: <input type="text" name="name"><br>
     Team: <select name="teamId" id="teamId">
             <?php
