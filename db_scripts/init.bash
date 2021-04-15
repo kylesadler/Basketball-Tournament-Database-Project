@@ -1,6 +1,24 @@
-mysql
+# open correct database
+# mysql
+# use krs028
 
-use krs028
+
+
+
+# clear and reset database
+SET FOREIGN_KEY_CHECKS = 0;
+drop tables PLAYER;
+drop tables TEAM;
+drop tables GAME;
+drop tables RESULT;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+show tables;
+
+
+
+
 
 # create tables
 
@@ -81,21 +99,28 @@ VALUES
 (7,'Devin Askew','G',2),
 (8,'Brandon Boston Jr.','G',2),
 (9,'Terrence Clarke','G',2),
-(10,'Mwani Wilkinson','F',4),
-(11,'Javonte Smart','G',4),
-(12,'Trendon Watford','F',4);
+(10,'Big Easy Lofton','F',3),
+(11,'Hammer Harrison','F',3),
+(12,'Hi-Lite Bruton','F',3),
+(13,'Moose Weekes','G',3),
+(14,'Mwani Wilkinson','F',4),
+(15,'Javonte Smart','G',4),
+(16,'Trendon Watford','F',4);
 
 
 INSERT INTO GAME
 VALUES 
 (1,1,1,2,STR_TO_DATE('4/25/21','%m/%d/%Y')),
 (2,2,3,4,STR_TO_DATE('4/25/21','%m/%d/%Y')),
-(3,1,2,4,STR_TO_DATE('4/27/21','%m/%d/%Y')),
-(4,2,1,3,STR_TO_DATE('4/27/21','%m/%d/%Y'));
+(3,3,2,4,STR_TO_DATE('4/27/21','%m/%d/%Y')),
+(4,1,1,3,STR_TO_DATE('4/27/21','%m/%d/%Y')),
+(5,3,1,4,STR_TO_DATE('4/29/21','%m/%d/%Y')),
+(6,2,2,3,STR_TO_DATE('4/29/21','%m/%d/%Y'));
 
 
 
 INSERT INTO RESULT
 VALUES 
 (1,86,72),
-(2,77,79);
+(2,94,79),
+(3,77,82);
