@@ -185,7 +185,6 @@ def get_results_by_date(date):
                 GAME.DATE = STR_TO_DATE('{date}','%m/%d/%Y')
                 AND RESULT.GAME_ID = GAME.ID;'''
 
-    print(query)
     return database.select(query)
 
 
