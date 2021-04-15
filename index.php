@@ -12,7 +12,7 @@
     <li> <a href="/~krs028/results_by_team.php">View Results by Team</a> </li>
     <li> <a href="/~krs028/results_by_date.php">View Results by Date</a> </li>
     <li> <a href="/~krs028/roster_by_team.php">View Rosters by Team</a> </li>
-    <li> <a href="/~krs028/game_by_court.php">BONUS: View Games by Court</a> </li>
+    <li> <a href="/~krs028/games_by_court.php">BONUS: View Game Schedule by Court</a> </li>
 </ol>
 
 </body>
