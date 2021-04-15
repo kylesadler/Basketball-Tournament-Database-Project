@@ -5,7 +5,6 @@
     require 'util/nav.php';
     require 'util/util.php';
     list($headers, $teams) = database('get_team_name_mascot_id');
-    
 ?>
 <h3>Add a new game:</h3>
 

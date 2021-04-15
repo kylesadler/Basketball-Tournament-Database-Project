@@ -74,7 +74,7 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 def add_game(home, away, court, date):
     _id = database.generate_unique_id('GAME')
-    database.insert('GAME', f"{_id},{home},{away},{court},STR_TO_DATE('{date}','%m/%d/%Y')")
+    database.insert('GAME', f"{_id},{court},{home},{away},STR_TO_DATE('{date}','%m/%d/%Y')")
 
 def add_team(name, mascot, seed):
 
@@ -85,6 +85,11 @@ def add_team(name, mascot, seed):
 def add_result(game, home, away):
     _id = database.generate_unique_id('RESULT')
     database.insert('RESULT', f"{_id},{game},{home},{away}")
+
+
+def add_player(name, position, team_id):
+    _id = database.generate_unique_id('PLAYER')
+    database.insert('PLAYER', f"{_id},{name},{position},{team_id}")
 
 
 def get_teams():
@@ -116,6 +121,9 @@ def get_games_and_results():
         )
 
 def get_players():
+    return database.select('SELECT * FROM PLAYER;')
+
+def get_roster():
     return database.select('SELECT * FROM PLAYER;')
 
 
@@ -158,10 +166,14 @@ COMMAND_TO_FUNCTION = {
     'add_game': add_game,
     'add_team': add_team,
     'add_result': add_result,
+    'add_player': add_player,
+
     'get_teams': get_teams,
     'get_players': get_players,
+    'get_roster': get_roster,
     'get_games': get_games,
     'get_results': get_results,
+
     'get_games_and_results': get_games_and_results,
     'get_team_name_mascot_id': get_team_name_mascot_id,
     'get_results_by_team_id': get_results_by_team_id,
