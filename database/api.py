@@ -179,7 +179,7 @@ def get_results_by_date(date):
                 RESULT.AWAY_TEAM_SCORE AS AWAY_SCORE,
                 GAME.COURT_NUM AS COURT_NUMBER,
                 GAME.DATE AS DATE
-            INNER JOIN GAME
+            FROM GAME
             INNER JOIN RESULT
             WHERE
                 GAME.DATE = STR_TO_DATE('{date}','%m/%d/%Y')
