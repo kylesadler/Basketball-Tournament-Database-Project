@@ -13,18 +13,21 @@
     Tournament Seed: <input type="text" name="tournamentSeed"><br>
     <input name="submit" type="submit" >
 </form>
-<br><br>
 
-</body>
-</html>
 
 <?php
 if (isset($_POST['submit'])) 
 {
     $args = parse_args($_POST, array("name", "mascot", "tournamentSeed"));
 
-    $result = database('add_team', $args);
-    print_r($result);
+    database('add_team', $args);
 }
+
+list($headers, $rows) = database('get_teams');
+print_table($headers, $rows);
 ?>
 
+<br><br>
+
+</body>
+</html>

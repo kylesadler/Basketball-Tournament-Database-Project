@@ -88,9 +88,17 @@ def add_result(game, home, away):
 
 
 def get_teams():
-    query = f'''SELECT * FROM TEAM;'''
+    return database.select('SELECT * FROM TEAM;')
 
-    return database.select(query)
+
+def get_results():
+    return database.select('SELECT * FROM RESULT;')
+
+def get_games():
+    return database.select('SELECT * FROM GAME;')
+
+def get_players():
+    return database.select('SELECT * FROM PLAYER;')
 
 
 def get_team_name_mascot_id():
@@ -133,6 +141,9 @@ COMMAND_TO_FUNCTION = {
     'add_team': add_team,
     'add_result': add_result,
     'get_teams': get_teams,
+    'get_players': get_players,
+    'get_games': get_games,
+    'get_results': get_results,
     'get_team_name_mascot_id': get_team_name_mascot_id,
     'get_results_by_team_id': get_results_by_team_id,
 }

@@ -13,10 +13,6 @@
     Away Team Score: <input type="text" name="away"><br>
     <input name="submit" type="submit" >
 </form>
-<br><br>
-
-</body>
-</html>
 
 <?php
 if (isset($_POST['submit'])) 
@@ -26,5 +22,12 @@ if (isset($_POST['submit']))
     $result = database('add_result', $args);
     print_r($result);
 }
+
+list($headers, $rows) = database('get_results');
+print_table($headers, $rows);
 ?>
 
+<br><br>
+
+</body>
+</html>

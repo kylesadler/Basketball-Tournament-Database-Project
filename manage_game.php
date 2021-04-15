@@ -14,19 +14,20 @@
     Date: <input type="text" name="date"><br>
     <input name="submit" type="submit" >
 </form>
-<br><br>
-
-</body>
-</html>
 
 <?php
 if (isset($_POST['submit'])) 
 {
     $args = parse_args($_POST, array("home", "away", "court_num", "date"));
 
-    list($headers, $rows) = database('add_game', $args);
-    print_r($headers);
-    print_r($rows);
+    database('add_game', $args);
 }
+
+list($headers, $rows) = database('get_games');
+print_table($headers, $rows);
 ?>
 
+<br><br>
+
+</body>
+</html>
