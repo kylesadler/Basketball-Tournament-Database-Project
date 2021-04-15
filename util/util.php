@@ -7,7 +7,7 @@ function database($python_command, $params = []) {
     // remove dangerous characters from command to protect web server
     $command = escapeshellcmd($command);
     
-    echo "command: $command <br>";
+    // echo "command: $command <br>";
     // system($command);
 
     $output = null;

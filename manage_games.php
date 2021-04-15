@@ -25,7 +25,7 @@
             ?>
         </select><br>
     Court Number: <input type="text" name="court_num"><br>
-    Date: <input type="text" name="date"><br>
+    Date: <input type="text" name="date" placeholder="mm/dd/yy'"><br>
     <input name="submit" type="submit" >
 </form>
 
