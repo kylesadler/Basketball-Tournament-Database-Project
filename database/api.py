@@ -125,8 +125,7 @@ def get_players():
         '''SELECT 
             PLAYER.NAME AS NAME,
             PLAYER.POSITION AS POSITION,
-            TEAM.NAME AS TEAM_NAME,
-            TEAM.MASCOT AS TEAM_MASCOT
+            CONCAT(TEAM.NAME, ' ', TEAM.MASCOT) AS TEAM
         FROM PLAYER
         INNER JOIN TEAM
             WHERE PLAYER.TEAM_ID = TEAM.ID;'''
