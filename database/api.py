@@ -160,7 +160,7 @@ def get_results_by_team_id(_id):
             INNER JOIN GAME
             INNER JOIN RESULT
             WHERE
-                TEAM.ID = '{util.clean_input(_id)}'
+                TEAM.ID = '{_id}'
                 AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
                 AND RESULT.GAME_ID = GAME.ID;'''
 
@@ -169,14 +169,14 @@ def get_results_by_team_id(_id):
 
 def get_roster_by_team(_id):
     return database.select(
-        '''SELECT 
+        f'''SELECT 
             PLAYER.NAME AS NAME,
             PLAYER.POSITION AS POSITION,
             CONCAT(TEAM.NAME, ' ', TEAM.MASCOT) AS TEAM
         FROM PLAYER
         INNER JOIN TEAM
             WHERE PLAYER.TEAM_ID = TEAM.ID
-            AND TEAM.ID = '{util.clean_input(_id)}';'''
+            AND TEAM.ID = '{_id}';'''
         )
 
 
