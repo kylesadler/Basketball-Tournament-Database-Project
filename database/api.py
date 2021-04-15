@@ -131,6 +131,16 @@ def get_players():
             WHERE PLAYER.TEAM_ID = TEAM.ID;'''
         )
 
+def get_result_dates():
+    return database.select(
+        '''SELECT 
+            GAME.DATE AS DATE
+        FROM RESULT
+        INNER JOIN GAME
+        WHERE RESULT.GAME_ID = GAME.ID
+        GROUP BY DATE;'''
+        )
+
 def get_roster():
     return database.select('SELECT * FROM PLAYER;')
 
@@ -219,6 +229,7 @@ COMMAND_TO_FUNCTION = {
     'get_results_by_team_id': get_results_by_team_id,
     'get_results_by_date': get_results_by_date,
     'get_roster_by_team': get_roster_by_team,
+    'get_result_dates': get_result_dates,
 }
 
 
