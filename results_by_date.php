@@ -7,7 +7,7 @@
 ?>
 <h3>Results by Date:</h3>
 
-<form action="manage_games.php" method="post">
+<form action="results_by_date.php" method="post">
     Select a date: <input type="text" name="date" placeholder="mm/dd/yy"><br>
     <input name="submit" type="submit" >
 </form>
