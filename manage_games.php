@@ -6,7 +6,7 @@
     require 'util/util.php';
     list($headers, $teams) = database('get_team_name_mascot_id');
 ?>
-<h3>Add a new game:</h3>
+<h3>Add a New Game</h3>
 
 <form action="manage_games.php" method="post">
     Home Team: <select name="home" id="home">

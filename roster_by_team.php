@@ -7,7 +7,7 @@
     list($headers, $teams) = database('get_team_name_mascot_id');
 ?>
 
-<h3>Results by Team</h3>
+<h3>Roster by Team</h3>
 
 <form action="roster_by_team.php" method="post">
 

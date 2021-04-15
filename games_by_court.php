@@ -6,7 +6,7 @@
     require 'util/util.php';
     list($headers, $court_nums) = database('get_court_numbers');
 ?>
-<h3>Add a new game:</h3>
+<h3>View Game Schedule by Court Number</h3>
 
 <form action="games_by_court.php" method="post">
     Select a court number: <select name="num" id="num">

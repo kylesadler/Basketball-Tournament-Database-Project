@@ -5,7 +5,7 @@
     require 'util/nav.php';
     require 'util/util.php';
 ?>
-<h3>Add a new team:</h3>
+<h3>Add a New Team:</h3>
 
 <form action="manage_teams.php" method="post">
     Name: <input type="text" name="name"><br>

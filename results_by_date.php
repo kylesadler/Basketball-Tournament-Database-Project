@@ -6,7 +6,7 @@
     require 'util/util.php';
     list($_, $dates) = database('get_result_dates');
 ?>
-<h3>Results by Date:</h3>
+<h3>Results by Date</h3>
 
 <form action="results_by_date.php" method="post">
 
