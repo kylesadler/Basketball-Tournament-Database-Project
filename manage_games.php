@@ -4,12 +4,28 @@
     require 'util/style.php';
     require 'util/nav.php';
     require 'util/util.php';
+    list($headers, $teams) = database('get_team_name_mascot_id');
+    
 ?>
-<h3>Add a new team:</h3>
+<h3>Add a new game:</h3>
 
 <form action="manage_games.php" method="post">
-    Home Team: <input type="text" name="home"><br>
-    Away Team: <input type="text" name="away"><br>
+    Home Team: <select name="home" id="home">
+            <?php
+                foreach ($teams as $i => $team) {
+                    // value is ID, text is Name Mascots
+                    echo '<option value="'.$team[2].'">'.$team[0].' '.$team[1].'</option>';
+                }
+            ?>
+        </select><br>
+    Away Team: <select name="away" id="away">
+            <?php
+                foreach ($teams as $i => $team) {
+                    // value is ID, text is Name Mascots
+                    echo '<option value="'.$team[2].'">'.$team[0].' '.$team[1].'</option>';
+                }
+            ?>
+        </select><br><br>
     Court Number: <input type="text" name="court_num"><br>
     Date: <input type="text" name="date"><br>
     <input name="submit" type="submit" >
