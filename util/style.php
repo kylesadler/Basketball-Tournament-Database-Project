@@ -3,6 +3,9 @@ body {
     background-color: #DDD;
     }
 
+table {
+    background-color: #baecf2;
+}
 
 .styled-table {
     border-collapse: collapse;
