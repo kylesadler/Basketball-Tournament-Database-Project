@@ -162,6 +162,7 @@ COMMAND_TO_FUNCTION = {
     'get_players': get_players,
     'get_games': get_games,
     'get_results': get_results,
+    'get_games_and_results': get_games_and_results,
     'get_team_name_mascot_id': get_team_name_mascot_id,
     'get_results_by_team_id': get_results_by_team_id,
 }
