@@ -1,5 +1,7 @@
 <html>
 <body>
+<h2>Kyle Sadler's Database Project</h2>
+
 <?php
     require 'util/style.php';
     require 'util/nav.php';

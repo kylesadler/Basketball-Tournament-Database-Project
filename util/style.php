@@ -1,7 +1,7 @@
 <style>
-body {background-color: powderblue;}
-h1   {color: blue;}
-p    {color: red;}
+body {
+    background-color: #DDD;
+    }
 
 
 .styled-table {
@@ -14,7 +14,7 @@ p    {color: red;}
 }
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: powderblue;
     color: #ffffff;
     text-align: left;
 }
@@ -33,12 +33,12 @@ p    {color: red;}
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid powderblue;
 }
 
 .styled-table tbody tr.active-row {
     font-weight: bold;
-    color: #009879;
+    color: powderblue;
 }
 
 </style>
