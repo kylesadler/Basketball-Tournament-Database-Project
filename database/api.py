@@ -89,7 +89,7 @@ def add_result(game, home, away):
 
 def add_player(name, position, team_id):
     _id = database.generate_unique_id('PLAYER')
-    database.insert('PLAYER', f"{_id},{name},{position},{team_id}")
+    database.insert('PLAYER', f"{_id},'{name}','{position}',{team_id}")
 
 
 def get_teams():
