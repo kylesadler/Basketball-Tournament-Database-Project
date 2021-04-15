@@ -141,6 +141,11 @@ def get_result_dates():
         GROUP BY DATE;'''
         )
 
+def get_court_numbers():
+    return database.select(
+        'SELECT COURT_NUM FROM GAME GROUP BY COURT_NUM;'
+        )
+
 def get_roster():
     return database.select('SELECT * FROM PLAYER;')
 
@@ -192,8 +197,28 @@ def get_results_by_date(date):
             FROM GAME
             INNER JOIN RESULT
             WHERE
-                GAME.DATE = STR_TO_DATE('{date}','%m/%d/%Y')
+                GAME.DATE = '{date}'
                 AND RESULT.GAME_ID = GAME.ID;'''
+
+    return database.select(query)
+
+
+def get_games_by_court(court_num):
+    query = f'''SELECT
+               GAME.HOME_TEAM_ID AS HOME_ID,
+               (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_NAME,
+               (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_MASCOT,
+               RESULT.HOME_TEAM_SCORE AS HOME_SCORE,
+               GAME.AWAY_TEAM_ID AS AWAY_ID,
+               (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_NAME,
+               (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_MASCOT,
+               RESULT.AWAY_TEAM_SCORE AS AWAY_SCORE,
+               GAME.COURT_NUM AS COURT_NUMBER,
+               GAME.DATE AS DATE
+        FROM GAME
+        LEFT JOIN RESULT
+            ON GAME.ID = RESULT.GAME_ID
+        WHERE GAME.COURT_NUM = {court_num};'''
 
     return database.select(query)
 
@@ -230,6 +255,9 @@ COMMAND_TO_FUNCTION = {
     'get_results_by_date': get_results_by_date,
     'get_roster_by_team': get_roster_by_team,
     'get_result_dates': get_result_dates,
+    'get_court_numbers': get_court_numbers,
+
+    'get_games_by_court': get_games_by_court,
 }
 
 
