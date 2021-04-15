@@ -15,7 +15,7 @@
         <?php
             foreach ($dates as $i => $date) {
                 // value is ID, text is Name Mascots
-                echo '<option value="'.$date.'">'.$date.'</option>';
+                echo '<option value="'.$date[0].'">'.$date[0].'</option>';
             }
         ?>
     </select>
