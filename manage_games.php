@@ -23,8 +23,31 @@ if (isset($_POST['submit']))
     database('add_game', $args);
 }
 
-list($headers, $rows) = database('get_games_and_results');
+
+list($keys, $values) = database('get_games_and_results');
+
+    
+$headers = array("Home", "Away", "Home Score", "Away Score", "Court", "Date");
+$rows = array();
+
+foreach ($values as $i => $value) {
+    
+    $data = array_combine($keys, $value);
+
+    $row = array(
+        $data['HOME_NAME'].' '.$data['HOME_MASCOT'],
+        $data['AWAY_NAME'].' '.$data['AWAY_MASCOT'],
+        $data['HOME_SCORE'],
+        $data['AWAY_SCORE'],
+        $data['COURT_NUMBER'],
+        $data['DATE']
+    );
+
+    array_push($rows, $row);
+}
+
 print_table($headers, $rows);
+
 ?>
 
 <br><br>
