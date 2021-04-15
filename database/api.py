@@ -68,16 +68,28 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 
 def add_game(home, away, court, date):
+    home = util.clean_input(home)
+    away = util.clean_input(away)
+    court = util.clean_input(court)
+    date = util.clean_input(date)
+
     _id = database.generate_unique_id('GAME')
     database.insert('GAME', f"{_id},{home},{away},{court},{date}")
 
 def add_team(name, mascot, seed):
+    name = util.clean_input(name)
+    mascot = util.clean_input(mascot)
+    seed = util.clean_input(seed)
+
     _id = database.generate_unique_id('TEAM')
-    database.insert('TEAM', f"{_id},{name},{mascot},{seed}")
+    database.insert('TEAM', f"{_id},'{name}','{mascot}',{seed}")
 
 
 def add_result(game, home, away):
-    # todo get unique ID
+    game = util.clean_input(game)
+    home = util.clean_input(home)
+    away = util.clean_input(away)
+
     _id = database.generate_unique_id('RESULT')
     database.insert('RESULT', f"{_id},{game},{home},{away}")
 
