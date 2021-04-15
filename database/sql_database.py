@@ -37,6 +37,11 @@ class SQLDatabase:
     def __del__(self):
         self.close()
 
+    def generate_unique_id(self, table):
+        _, ids = self.select(f'SELECT ID FROM {table};')
+        return max([x[0] for x in ids]) + 1
+
+
 
 
 

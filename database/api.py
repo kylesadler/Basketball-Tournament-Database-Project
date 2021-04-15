@@ -10,7 +10,6 @@ MYSQL_PASS ='PhoV9bi2'
 database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 
-
 """ 
 
         query = f'''SELECT 
@@ -67,36 +66,24 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 """
 
+
 def add_game(home, away, court, date):
-    # util.send(f"adding game {home} {away} {court} {date} <br> <br>")
-
-    query = f'''SELECT 
-                    SUPPLIER.ID AS SUPPLIER_ID,
-                    SUPPLIER.NAME AS SUPPLIER_NAME,
-                    SUPPLIER.PHONE_NUMBER AS SUPPLIER_PHONE_NUMBER,
-                    ITEM.NAME AS COFFEE_NAME,
-                    ITEM.ROASTING_TYPE
-                FROM INVENTORY_MGMT
-                INNER JOIN ITEM
-                INNER JOIN SUPPLIER
-                WHERE
-                    SUPPLIER.COUNTRY = 'USA'
-                    AND INVENTORY_MGMT.ITEM_ID = ITEM.ID
-                    AND INVENTORY_MGMT.SUPPLIER_ID = SUPPLIER.ID;'''
-    
-
-    return database.select(query)
+    _id = database.generate_unique_id('GAME')
+    database.insert('GAME', f"{_id},{home},{away},{court},{date}")
 
 def add_team(name, mascot, seed):
-    return f"adding team {name} {mascot} as {seed} seed <br> <br>"
+    _id = database.generate_unique_id('TEAM')
+    database.insert('TEAM', f"{_id},{name},{mascot},{seed}")
+
 
 def add_result(game, home, away):
-    return f"adding result {game} {home} {away} <br> <br>"
+    # todo get unique ID
+    _id = database.generate_unique_id('RESULT')
+    database.insert('RESULT', f"{_id},{game},{home},{away}")
+
 
 def get_teams():
-    query = f'''SELECT 
-            ID, NAME, MASCOT, TOURNAMENT_SEED
-        FROM TEAM;'''
+    query = f'''SELECT * FROM TEAM;'''
 
     return database.select(query)
 
@@ -109,7 +96,7 @@ def get_team_name_mascot_id():
     return database.select(query)
 
 
-def get_results_by_team_id(id):
+def get_results_by_team_id(_id):
     
     query = f'''SELECT
                 GAME.HOME_TEAM_ID AS HOME_ID,
@@ -126,7 +113,7 @@ def get_results_by_team_id(id):
             INNER JOIN GAME
             INNER JOIN RESULT
             WHERE
-                TEAM.ID = '{util.clean_input(id)}'
+                TEAM.ID = '{util.clean_input(_id)}'
                 AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
                 AND RESULT.GAME_ID = GAME.ID;'''
 
