@@ -13,7 +13,6 @@
     Home Team: <select name="home" id="home">
             <?php
                 foreach ($teams as $i => $team) {
-                    // value is ID, text is Name Mascots
                     echo '<option value="'.$team[2].'">'.$team[0].' '.$team[1].'</option>';
                 }
             ?>
@@ -21,11 +20,10 @@
     Away Team: <select name="away" id="away">
             <?php
                 foreach ($teams as $i => $team) {
-                    // value is ID, text is Name Mascots
                     echo '<option value="'.$team[2].'">'.$team[0].' '.$team[1].'</option>';
                 }
             ?>
-        </select><br><br>
+        </select><br>
     Court Number: <input type="text" name="court_num"><br>
     Date: <input type="text" name="date"><br>
     <input name="submit" type="submit" >
