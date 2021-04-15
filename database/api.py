@@ -3,7 +3,12 @@ from sql_database import SQLDatabase
 # from util import *
 import util
 
-""" NOTE: return a list of objects. May be html strings """
+""" 
+
+arguments cleaned and passed to functions automatically
+NOTE: return a list of objects. May be html strings
+
+"""
 
 MYSQL_USER = 'krs028'
 MYSQL_PASS ='PhoV9bi2'
@@ -68,28 +73,16 @@ database = SQLDatabase('localhost', MYSQL_USER, MYSQL_PASS, MYSQL_USER)
 
 
 def add_game(home, away, court, date):
-    home = util.clean_input(home)
-    away = util.clean_input(away)
-    court = util.clean_input(court)
-    date = util.clean_input(date)
-
     _id = database.generate_unique_id('GAME')
     database.insert('GAME', f"{_id},{home},{away},{court},{date}")
 
 def add_team(name, mascot, seed):
-    name = util.clean_input(name)
-    mascot = util.clean_input(mascot)
-    seed = util.clean_input(seed)
 
     _id = database.generate_unique_id('TEAM')
     database.insert('TEAM', f"{_id},'{name}','{mascot}',{seed}")
 
 
 def add_result(game, home, away):
-    game = util.clean_input(game)
-    home = util.clean_input(home)
-    away = util.clean_input(away)
-
     _id = database.generate_unique_id('RESULT')
     database.insert('RESULT', f"{_id},{game},{home},{away}")
 
@@ -149,7 +142,7 @@ COMMAND_TO_FUNCTION = {
 
 if __name__ == '__main__':
     command = sys.argv[1]
-    args = sys.argv[2:]   
+    args = [util.clean_input(x) for x in sys.argv[2:]]
 
     # print(f"running {command} on arguments: {', '.join(args)} <br> <br>")
 
