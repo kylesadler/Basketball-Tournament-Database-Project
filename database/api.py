@@ -167,6 +167,30 @@ def get_results_by_team_id(_id):
     return database.select(query)
 
 
+def get_results_by_date(date):
+    query = f'''SELECT
+                GAME.HOME_TEAM_ID AS HOME_ID,
+                (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_NAME,
+                (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.HOME_TEAM_ID) AS HOME_MASCOT,
+                RESULT.HOME_TEAM_SCORE AS HOME_SCORE,
+                GAME.AWAY_TEAM_ID AS AWAY_ID,
+                (SELECT TEAM.NAME FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_NAME,
+                (SELECT TEAM.MASCOT FROM TEAM WHERE TEAM.ID = GAME.AWAY_TEAM_ID) AS AWAY_MASCOT,
+                RESULT.AWAY_TEAM_SCORE AS AWAY_SCORE,
+                GAME.COURT_NUM AS COURT_NUMBER,
+                GAME.DATE AS DATE
+            FROM TEAM
+            INNER JOIN GAME
+            INNER JOIN RESULT
+            WHERE
+                GAME.DATE = STR_TO_DATE('{date}','%m/%d/%Y')
+                AND (GAME.AWAY_TEAM_ID = TEAM.ID OR GAME.HOME_TEAM_ID = TEAM.ID)
+                AND RESULT.GAME_ID = GAME.ID;'''
+
+    print(query)
+    return database.select(query)
+
+
 def get_roster_by_team(_id):
     return database.select(
         f'''SELECT 
@@ -196,6 +220,7 @@ COMMAND_TO_FUNCTION = {
     'get_games_and_results': get_games_and_results,
     'get_team_name_mascot_id': get_team_name_mascot_id,
     'get_results_by_team_id': get_results_by_team_id,
+    'get_results_by_date': get_results_by_date,
     'get_roster_by_team': get_roster_by_team,
 }
 
