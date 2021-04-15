@@ -167,6 +167,17 @@ def get_results_by_team_id(_id):
     return database.select(query)
 
 
+def get_roster_by_team(_id):
+    return database.select(
+        '''SELECT 
+            PLAYER.NAME AS NAME,
+            PLAYER.POSITION AS POSITION,
+            CONCAT(TEAM.NAME, ' ', TEAM.MASCOT) AS TEAM
+        FROM PLAYER
+        INNER JOIN TEAM
+            WHERE PLAYER.TEAM_ID = TEAM.ID
+            AND TEAM.ID = '{util.clean_input(_id)}';'''
+        )
 
 
 
@@ -185,6 +196,7 @@ COMMAND_TO_FUNCTION = {
     'get_games_and_results': get_games_and_results,
     'get_team_name_mascot_id': get_team_name_mascot_id,
     'get_results_by_team_id': get_results_by_team_id,
+    'get_roster_by_team': get_roster_by_team,
 }
 
 
